@@ -7,6 +7,7 @@ import Modal from '../components/common/Modal';
 import Loader from '../components/common/Loader';
 import EmptyState from '../components/common/EmptyState';
 import Avatar from '../components/common/Avatar';
+import Card from '../components/common/Card';
 import { useToast } from '../components/common/Toast';
 
 const STATUSES = ['Backlog', 'Todo', 'InProgress', 'Review', 'Done'];
