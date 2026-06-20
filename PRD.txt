@@ -1,0 +1,128 @@
+For an o2h Full Stack Application Developer Fresher
+Hiring Assessment:
+Frontend development (React, HTML, CSS, JS)
+Backend development (Node.js/PHP/Laravel)
+API integration
+Database design
+Clean code practices
+
+Task:  Project Management Portal
+
+Problem Statement
+Comprehensive Project Tracker Specification
+This document provides a detailed description of a versatile Project Tracker System designed to be adaptable for any project type (e.g., software development, marketing campaigns, construction, etc.). It outlines all possible roles, modules, and granular functionalities.
+
+1. User Roles & Permissions
+A robust project tracker requires flexible Role-Based Access Control (RBAC). Here are the standard roles:
+
+
+1.1 Project Manager (PM)
+Description: Responsible for planning, executing, and closing projects.
+Capabilities: Create/edit projects, allocate budgets, assign team members, create milestones, manage project timelines (Gantt charts), generate comprehensive reports, and approve timesheets.
+1.2Team Lead
+Description: Manages a specific sub-team or functional area within a project.
+Capabilities: Create and assign tasks to contributors, review code/work quality, manage sprint boards, and monitor daily progress of their team.
+1.3 Contributor (Developer / Designer / Staff)
+Description: The core team members executing the tasks.
+Capabilities: View assigned tasks, update task statuses (To Do, In Progress, Done), log hours (time tracking), add comments/attachments to tasks, and update personal profiles.
+1.4 QA / Tester (Optional)
+Description: Responsible for quality assurance and bug tracking.
+Capabilities: Create bug reports, link bugs to specific tasks/features, transition bug statuses, and verify fixes.
+
+2. Core Modules & Functionalities
+2.1 Dashboard & Analytics (Home)
+Personalized Views: Widgets customized based on the user's role (e.g., Contributor sees "My Tasks"; PM sees "Project Health & Budget").
+High-Level Metrics: Total active projects, overdue tasks, budget burn down, and resource utilization.
+Recent Activity Feed: An audit trail of recent updates, comments, and status changes across accessible projects.
+2.2 Project Management
+Project Creation: Define project name, description, start/end dates, allocated budget, and priority.
+Project Templates: Save successful project structures as templates for future use (e.g., "Standard Agile Software Project", "Marketing Launch").
+Milestones & Phases: Group tasks into larger milestones with specific deadlines.
+Project Portfolio View: A bird's-eye view of all ongoing projects and their RAG (Red, Amber, Green) status.
+2.3 Task Management
+Task Creation: Title, rich text description, assignee, due date, priority (Low, Medium, High, Critical), and estimated hours.
+Sub-tasks & Checklists: Break down complex tasks into smaller, manageable sub-tasks.
+Task Dependencies: Define relationships (Finish-to-Start, Start-to-Start, etc.) so tasks cannot start until predecessors are completed.
+Views:
+List View: Spreadsheet-like view for bulk editing.
+Kanban Board: Drag-and-drop columns (e.g., Backlog, In Progress, Review, Done).
+Gantt Chart: Visual timeline for schedule tracking.
+Calendar View: Monthly/Weekly view of deadlines.
+2.4 Time Tracking & Timesheets
+Manual Entry: Users log hours spent on specific tasks along with notes.
+Timers: Built-in start/stop timers for accurate tracking.
+Timesheet Approvals: Managers can review, approve, or reject logged hours for payroll or client billing purposes.
+Billable vs. Non-Billable: Tag hours to accurately invoice clients.
+2.5 Collaboration & Communication
+Comments & Mentions: Threaded comments on tasks with @mentions to trigger notifications.
+File Management: Upload and attach documents, images, and links directly to projects and tasks. Version control for attachments.
+Project Wiki / Docs: Built-in collaborative documents (similar to Notion or Confluence) for project specs, meeting notes, and guidelines.
+2.6 Resource Management
+Workload Allocation: Visual heatmap showing team member availability and over-allocation across all projects.
+Skills Directory: Tag users with specific skills (e.g., "React", "Copywriting") to easily find the right person for a task.
+Leave Management: Integrate with team calendars to show PTO/Holidays, preventing task assignment to unavailable users.
+2.7 Issue & Risk Tracking
+Bug Tracker: Dedicated fields for software bugs (Environment, Steps to Reproduce, Expected Behavior).
+Risk Register: Log potential project risks, assess probability/impact, and assign mitigation strategies.
+2.8 Reporting & Exporting
+Custom Reports: Builder to generate reports on overdue tasks, user performance, budget variance, etc.
+Export Formats: Export data to PDF, CSV, or Excel.
+Scheduled Reports: Automatically email specific reports to stakeholders every week/month.
+2.9 Settings & Integrations
+Custom Fields: Add custom data fields to projects or tasks to fit unique business needs.
+Workflow Automation: "If this, then that" rules (e.g., "If task status changes to 'Review', assign to QA Lead").
+Third-Party Integrations: Connect with Slack/Teams (notifications), GitHub/GitLab (code commits linked to tasks), Google Drive/Dropbox (files), and Jira/Trello (imports).
+3. Best Practices for Implementation
+Keep it Modular: If building this application, design it so smaller teams can disable complex features (like Risk Registers or Gantt Charts) to keep the UI clean.
+Mobile Responsiveness: Ensure field workers or traveling managers can update task statuses via a mobile app or PWA.
+Audit Logs: Track every change (who changed what, and when) for security and accountability.
+
+UI Requirements
+Responsive design
+Mobile-friendly
+Loading indicator while fetching data
+Empty state if no tasks exist
+Bonus:
+Dark Mode Toggle
+
+Backend Requirements
+Create REST APIs.
+APIs
+GET /tasks
+Returns all tasks.
+POST /tasks
+
+
+Database Design
+Task Table
+Field Type
+id Integer
+title String
+description Text
+status String
+created_at Timestamp
+Use:
+MySQL
+
+Technical Constraints
+Frontend:
+
+React.js
+Axios
+CSS/Bootstrap/Tailwind
+Backend:
+Node.js + Express
+
+
+Expected Folder Structure
+project-root/
+frontend/
+├─ src/
+├─ components/
+├─ pages/
+└─ services/
+backend/
+├─ routes/
+├─ controllers/
+├─ models/
+└─ config/
