@@ -111,17 +111,23 @@ const Reports = () => {
       return (
         <div className="stats-grid">
           <Card className="stat-card stat-secondary">
-            <div className="stat-icon">📁</div>
+            <div className="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            </div>
             <div className="stat-value">{data.length}</div>
             <div className="stat-label">Total Projects</div>
           </Card>
           <Card className="stat-card stat-accent">
-            <div className="stat-icon">💰</div>
+            <div className="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
             <div className="stat-value">${totalBudget.toLocaleString()}</div>
             <div className="stat-label">Total Budget Portfolio</div>
           </Card>
           <Card className="stat-card stat-bright">
-            <div className="stat-icon">📈</div>
+            <div className="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
             <div className="stat-value">{overallProgress}%</div>
             <div className="stat-label">Portfolio Completion</div>
           </Card>
@@ -132,12 +138,16 @@ const Reports = () => {
       return (
         <div className="stats-grid">
           <Card className="stat-card stat-primary">
-            <div className="stat-icon">⚠️</div>
+            <div className="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
             <div className="stat-value">{data.length}</div>
             <div className="stat-label">Overdue Tasks</div>
           </Card>
           <Card className="stat-card stat-primary">
-            <div className="stat-icon">🔥</div>
+            <div className="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+            </div>
             <div className="stat-value">{criticalCount}</div>
             <div className="stat-label">High & Critical Priority Overdue</div>
           </Card>
@@ -151,17 +161,23 @@ const Reports = () => {
       return (
         <div className="stats-grid">
           <Card className="stat-card stat-secondary">
-            <div className="stat-icon">⏱️</div>
+            <div className="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
             <div className="stat-value">{totalHours} hrs</div>
             <div className="stat-label">Total Logged Hours</div>
           </Card>
           <Card className="stat-card stat-bright">
-            <div className="stat-icon">✅</div>
+            <div className="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
             <div className="stat-value">{approvedHours} hrs</div>
             <div className="stat-label">Approved Hours</div>
           </Card>
           <Card className="stat-card stat-accent">
-            <div className="stat-icon">💵</div>
+            <div className="stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
             <div className="stat-value">{billableHours} hrs</div>
             <div className="stat-label">Billable Hours</div>
           </Card>
@@ -178,25 +194,30 @@ const Reports = () => {
           <p className="page-subtitle">Generate custom reports, export data, and track portfolio statistics.</p>
         </div>
         <div style={{ display: 'flex', gap: '8px' }}>
-          <Button variant="outline" onClick={downloadCSV} disabled={loading || data.length === 0}>
-            📤 Export CSV
+          <Button variant="outline" onClick={downloadCSV} disabled={loading || data.length === 0} style={{ display: 'inline-flex', alignItems: 'center' }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Export CSV
           </Button>
-          <Button variant="outline" onClick={() => window.print()}>
-            🖨️ Print PDF
+          <Button variant="outline" onClick={() => window.print()} style={{ display: 'inline-flex', alignItems: 'center' }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print PDF
           </Button>
         </div>
       </div>
 
       <Card style={{ marginBottom: '24px' }}>
         <div className="card-body" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          <Button variant={reportType === 'project' ? 'primary' : 'ghost'} onClick={() => setReportType('project')}>
-            📁 Project Portfolio
+          <Button variant={reportType === 'project' ? 'primary' : 'ghost'} onClick={() => setReportType('project')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            Project Portfolio
           </Button>
-          <Button variant={reportType === 'overdue' ? 'primary' : 'ghost'} onClick={() => setReportType('overdue')}>
-            ⚠️ Overdue Tasks
+          <Button variant={reportType === 'overdue' ? 'primary' : 'ghost'} onClick={() => setReportType('overdue')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Overdue Tasks
           </Button>
-          <Button variant={reportType === 'time' ? 'primary' : 'ghost'} onClick={() => setReportType('time')}>
-            ⏱️ Timesheet & Workload
+          <Button variant={reportType === 'time' ? 'primary' : 'ghost'} onClick={() => setReportType('time')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Timesheet & Workload
           </Button>
         </div>
       </Card>
@@ -206,7 +227,13 @@ const Reports = () => {
       {loading ? (
         <Loader />
       ) : data.length === 0 ? (
-        <EmptyState icon="📊" title="No data available" message="There are no records in the system that match this report type." />
+        <EmptyState 
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--text-tertiary)' }}><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          } 
+          title="No data available" 
+          message="There are no records in the system that match this report type." 
+        />
       ) : (
         <Card>
           <div className="card-body" style={{ padding: 0, overflowX: 'auto' }}>

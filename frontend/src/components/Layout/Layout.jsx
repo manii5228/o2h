@@ -8,7 +8,6 @@ const pageTitles = {
   '/projects': 'Projects',
   '/tasks': 'Tasks',
   '/time-tracking': 'Time Tracking',
-  '/bugs': 'Bug Tracker',
   '/team': 'Team',
   '/reports': 'Reports',
   '/settings': 'Settings',

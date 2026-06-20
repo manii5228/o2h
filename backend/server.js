@@ -50,7 +50,6 @@ app.use('/api/tasks', require('./routes/taskRoutes'));
 app.use('/api/milestones', require('./routes/milestoneRoutes'));
 app.use('/api/time-entries', require('./routes/timeEntryRoutes'));
 app.use('/api/comments', require('./routes/commentRoutes'));
-app.use('/api/bugs', require('./routes/bugRoutes'));
 app.use('/api/risks', require('./routes/riskRoutes'));
 app.use('/api/dashboard', require('./routes/dashboardRoutes'));
 

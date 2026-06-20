@@ -122,7 +122,7 @@ const Tasks = () => {
           <div className="view-toggle">
             {['kanban', 'list', 'calendar', 'gantt'].map(v => (
               <button key={v} className={`view-toggle-btn ${view === v ? 'active' : ''}`} onClick={() => setView(v)}>
-                {v === 'kanban' ? '▦ Board' : v === 'list' ? '☰ List' : v === 'calendar' ? '📅 Calendar' : '⧗ Gantt'}
+                {v.charAt(0).toUpperCase() + v.slice(1)}
               </button>
             ))}
           </div>
@@ -131,7 +131,18 @@ const Tasks = () => {
       </div>
 
       {tasks.length === 0 && view !== 'kanban' ? (
-        <EmptyState icon="✅" title="No tasks yet" message="Create your first task to get started with project tracking." actionText="Create Task" onAction={() => setShowModal(true)} />
+        <EmptyState 
+          icon={
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--text-tertiary)' }}>
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+          } 
+          title="No tasks yet" 
+          message="Create your first task to get started with project tracking." 
+          actionText="Create Task" 
+          onAction={() => setShowModal(true)} 
+        />
       ) : view === 'kanban' ? (
         <div className="kanban-board">
           {STATUSES.map(status => {

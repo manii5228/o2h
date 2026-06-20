@@ -9,20 +9,20 @@ const ActivityLogModel = {
   },
 
   async findByProject(projectId, limit = 20) {
-    const [rows] = await pool.execute(
+    const [rows] = await pool.query(
       `SELECT al.*, u.name as user_name, u.avatar as user_avatar FROM activity_log al
        LEFT JOIN users u ON al.user_id = u.id WHERE al.project_id = ? ORDER BY al.created_at DESC LIMIT ?`,
-      [projectId, limit]
+      [projectId, parseInt(limit, 10)]
     );
     return rows;
   },
 
   async findRecent(limit = 30) {
-    const [rows] = await pool.execute(
+    const [rows] = await pool.query(
       `SELECT al.*, u.name as user_name, u.avatar as user_avatar, p.name as project_name
        FROM activity_log al LEFT JOIN users u ON al.user_id = u.id LEFT JOIN projects p ON al.project_id = p.id
        ORDER BY al.created_at DESC LIMIT ?`,
-      [limit]
+      [parseInt(limit, 10)]
     );
     return rows;
   }

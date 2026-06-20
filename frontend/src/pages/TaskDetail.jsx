@@ -84,7 +84,14 @@ const TaskDetail = () => {
           <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
             <Badge type={task.status} />
             <Badge type={task.priority} />
-            {task.project_name && <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>📁 {task.project_name}</span>}
+            {task.project_name && (
+              <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ verticalAlign: 'middle' }}>
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                </svg>
+                {task.project_name}
+              </span>
+            )}
           </div>
         </div>
         <div style={{ display: 'flex', gap: '8px' }}>

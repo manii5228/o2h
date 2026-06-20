@@ -1,4 +1,5 @@
 const ProjectModel = require('../models/projectModel');
+const UserModel = require('../models/userModel');
 const ActivityLogModel = require('../models/activityLogModel');
 
 const getProjects = async (req, res) => {
@@ -60,6 +61,13 @@ const deleteProject = async (req, res) => {
 const addMember = async (req, res) => {
   try {
     const { user_id, role } = req.body;
+    const user = await UserModel.findById(user_id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    if (user.role !== 'TeamLead') {
+      return res.status(400).json({ message: 'Only users with the Team Lead role can be added as project members' });
+    }
     await ProjectModel.addMember(req.params.id, user_id, role);
     await ActivityLogModel.create({ project_id: req.params.id, user_id: req.user.id, action: 'Added member', details: `User ${user_id}` });
     const members = await ProjectModel.getMembers(req.params.id);

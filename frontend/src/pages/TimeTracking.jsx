@@ -140,7 +140,13 @@ const TimeTracking = () => {
 
       <div className="grid-2" style={{ alignItems: 'start' }}>
         <Card className="timer-widget">
-          <h3 style={{ opacity: 0.85 }}>⏱️ Timer</h3>
+          <h3 style={{ opacity: 0.85, display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            Timer
+          </h3>
           <div className="timer-display">{formatTimer(timerSeconds)}</div>
           <div style={{ marginBottom: '16px' }}>
             <select value={timerTask} onChange={e => setTimerTask(e.target.value)} style={{ background: 'rgba(255,255,255,0.1)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', maxWidth: '250px' }}>
@@ -150,11 +156,26 @@ const TimeTracking = () => {
           </div>
           <div className="timer-controls">
             {!timerRunning ? (
-              <button className="btn btn-accent" onClick={startTimer}>▶ Start</button>
+              <button className="btn btn-accent" onClick={startTimer} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+                Start
+              </button>
             ) : (
-              <button className="btn btn-danger" onClick={stopTimer}>⏹ Stop & Log</button>
+              <button className="btn btn-danger" onClick={stopTimer} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="4" y="4" width="16" height="16" />
+                </svg>
+                Stop & Log
+              </button>
             )}
-            <button className="btn btn-outline" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.3)' }} onClick={resetTimer}>↻ Reset</button>
+            <button className="btn btn-outline" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.3)', display: 'inline-flex', alignItems: 'center', gap: '6px' }} onClick={resetTimer}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+              </svg>
+              Reset
+            </button>
           </div>
         </Card>
 
