@@ -1,0 +1,140 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import api from '../services/api';
+import Card from '../components/common/Card';
+import Badge from '../components/common/Badge';
+import Button from '../components/common/Button';
+import Modal from '../components/common/Modal';
+import Loader from '../components/common/Loader';
+import EmptyState from '../components/common/EmptyState';
+import { useToast } from '../components/common/Toast';
+
+const Projects = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [form, setForm] = useState({ name: '', description: '', start_date: '', end_date: '', budget: '', priority: 'Medium' });
+  const [saving, setSaving] = useState(false);
+  const navigate = useNavigate();
+  const { addToast } = useToast();
+
+  const fetchProjects = async () => {
+    try {
+      const res = await api.get('/projects');
+      setProjects(res.data);
+    } catch (err) {
+      addToast('Failed to load projects', 'error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => { fetchProjects(); }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      await api.post('/projects', form);
+      addToast('Project created successfully!', 'success');
+      setShowModal(false);
+      setForm({ name: '', description: '', start_date: '', end_date: '', budget: '', priority: 'Medium' });
+      fetchProjects();
+    } catch (err) {
+      addToast('Failed to create project', 'error');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (loading) return <Loader />;
+
+  return (
+    <div className="fade-in-up">
+      <div className="page-header">
+        <div>
+          <h1 className="page-title">Projects</h1>
+          <p className="page-subtitle">{projects.length} projects total</p>
+        </div>
+        <Button onClick={() => setShowModal(true)}>+ New Project</Button>
+      </div>
+
+      {projects.length === 0 ? (
+        <EmptyState icon="📁" title="No projects yet" message="Create your first project to start tracking tasks and milestones." actionText="Create Project" onAction={() => setShowModal(true)} />
+      ) : (
+        <div className="grid-3">
+          {projects.map(project => (
+            <Card key={project.id} className="project-card" lift onClick={() => navigate(`/projects/${project.id}`)}>
+              <div className="project-card-header">
+                <h3 className="project-card-title">{project.name}</h3>
+                <Badge type={project.rag_status || 'Green'} />
+              </div>
+              <p className="project-card-desc">{project.description || 'No description'}</p>
+              <div style={{ marginBottom: '12px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px', fontSize: '0.8rem', color: 'var(--text-tertiary)' }}>
+                  <span>Progress</span>
+                  <span>{project.task_count > 0 ? Math.round(project.completed_tasks / project.task_count * 100) : 0}%</span>
+                </div>
+                <div className="progress-bar">
+                  <div className="progress-fill" style={{ width: `${project.task_count > 0 ? (project.completed_tasks / project.task_count * 100) : 0}%` }}></div>
+                </div>
+              </div>
+              <div className="project-card-footer">
+                <div className="project-card-meta">
+                  <span>📋 {project.task_count || 0} tasks</span>
+                  <span>👥 {project.member_count || 0}</span>
+                </div>
+                <Badge type={project.status || 'Active'} />
+              </div>
+            </Card>
+          ))}
+        </div>
+      )}
+
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)} title="Create New Project" footer={
+        <>
+          <Button variant="outline" onClick={() => setShowModal(false)}>Cancel</Button>
+          <Button onClick={handleSubmit} loading={saving}>Create Project</Button>
+        </>
+      }>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="proj-name">Project Name</label>
+            <input id="proj-name" type="text" placeholder="Enter project name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="proj-desc">Description</label>
+            <textarea id="proj-desc" placeholder="Project description..." value={form.description} onChange={e => setForm({ ...form, description: e.target.value })}></textarea>
+          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="proj-start">Start Date</label>
+              <input id="proj-start" type="date" value={form.start_date} onChange={e => setForm({ ...form, start_date: e.target.value })} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="proj-end">End Date</label>
+              <input id="proj-end" type="date" value={form.end_date} onChange={e => setForm({ ...form, end_date: e.target.value })} />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="proj-budget">Budget ($)</label>
+              <input id="proj-budget" type="number" placeholder="0.00" value={form.budget} onChange={e => setForm({ ...form, budget: e.target.value })} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="proj-priority">Priority</label>
+              <select id="proj-priority" value={form.priority} onChange={e => setForm({ ...form, priority: e.target.value })}>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Critical">Critical</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </Modal>
+    </div>
+  );
+};
+
+export default Projects;
